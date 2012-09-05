@@ -1,0 +1,24 @@
+{
+    "name": "desarrolla2/exporter",
+    "description": "Provides an adapter interface to export data arrays to diferent formats",
+    "keywords": ["csv"],
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+    {
+        "name": "Daniel González",
+        "homepage": "http://desarrolla2.com/"
+    }
+    ],
+    "require": 
+    {
+        "php": ">=5.3.0"
+    },
+    "autoload": 
+    {
+        "psr-0": {
+            "Desarrolla2\\Exporter\\": "src/" 
+        }
+    },
+    "minimum-stability": "dev"
+}
