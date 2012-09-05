@@ -9,7 +9,25 @@
  * @file : AdapterInterface.php , UTF-8
  * @date : Sep 6, 2012 , 12:29:07 AM
  */
-class AdapterInterface
+
+namespace Desarrolla2\Exporter\Adapter;
+
+interface AdapterInterface
 {
-    //put your code here
+
+    /**
+     * @param array $data
+     */
+    public function setData(array $data = array());
+
+    /**
+     * @param string $key
+     * @param string $value
+     */
+    public function setOption($key, $value);
+
+    /**
+     * Export data
+     */
+    public function export();
 }

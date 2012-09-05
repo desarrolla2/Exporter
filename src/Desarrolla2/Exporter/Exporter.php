@@ -10,9 +10,135 @@
  * @date : Sep 6, 2012 , 12:28:03 AM
  */
 
-namespace Desarrolla2\DB;
+namespace Desarrolla2\Exporter;
 
-class Exporter
+use Desarrolla2\Exporter\ExporterInterface;
+use Desarrolla2\Exporter\Exception;
+
+class Exporter implements ExporterInterface
 {
-    //put your code here
+
+    /**
+     * @var \Desarrolla2\Exporter\ExporterInterface;
+     */
+    protected $adapter = null;
+
+    /**
+     * @var array
+     */
+    protected $options = array();
+
+    /**
+     * @var array
+     */
+    protected $errors = array();
+
+    /**
+     * @var array
+     */
+    protected $validOptions = array(
+        'with-headers', 'filename', 'separator'
+    );
+
+    /**
+     * @var array
+     */
+    protected $requiredOptions = array(
+        'filename',
+    );
+
+    /**
+     * {@inheritdoc } 
+     */
+    public function export()
+    {
+        $this->checkOptions();
+        $this->getAdapter()->export();
+    }
+
+    /**
+     * check if all options was set
+     */
+    protected function checkOptions()
+    {
+        foreach ($this->requiredOptions as $required) {
+            if (!array_key_exists($required, $this->options)) {
+                throw new Exception\OptionsNotValidException('Required option [' . $required . '] to works ');
+            }
+        }
+    }
+
+    /**
+     * Get the adapter
+     * 
+     * @return type
+     * @throws Exception\AdapterNotSetException
+     */
+    protected function getAdapter()
+    {
+        if ($this->adapter) {
+            return $this->adapter;
+        } else {
+            throw new Exception\AdapterNotSetException();
+        }
+    }
+
+    /**
+     * {@inheritdoc } 
+     */
+    public function setAdapter(Adapter\AdapterInterface $adapter)
+    {
+        $this->adapter = $adapter;
+    }
+
+    /**
+     * {@inheritdoc } 
+     */
+    public function setData(array $array = array())
+    {
+        $this->getAdapter()->setData($array);
+    }
+
+    /**
+     * {@inheritdoc } 
+     */
+    public function setFile($file)
+    {
+        $this->setOption('filename', $file);
+    }
+
+    /**
+     * 
+     * @param string $option
+     * @return string
+     */
+    protected function sanitizeOption($option)
+    {
+        return trim(strtolower((string) $option));
+    }
+
+    /**
+     * {@inheritdoc } 
+     */
+    public function setOption($key, $value)
+    {
+        $value = $this->sanitizeOption($value);
+        $key = $this->sanitizeOption($key);
+        if (!in_array($key, $this->validOptions)) {
+            throw new Exception\OptionNotValidException('Option not valid ' . $key);
+        }
+        $this->options[$key] = $value;
+        $this->getAdapter()->setOption($key, $value);
+    }
+
+    /**
+     * {@inheritdoc } 
+     */
+    public function setOptions(array $options = array())
+    {
+        foreach ($options as $key => $value) {
+            $this->setOption($key, $value);
+        }
+    }
+
 }
