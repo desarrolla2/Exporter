@@ -37,14 +37,15 @@ class Exporter implements ExporterInterface
      * @var array
      */
     protected $validOptions = array(
-        'with-headers', 'filename', 'separator'
+        'with-headers', 'data',
+        'filename', 'separator'
     );
 
     /**
      * @var array
      */
     protected $requiredOptions = array(
-        'filename',
+        'data', 'filename',
     );
 
     /**
@@ -122,7 +123,6 @@ class Exporter implements ExporterInterface
      */
     public function setOption($key, $value)
     {
-        $value = $this->sanitizeOption($value);
         $key = $this->sanitizeOption($key);
         if (!in_array($key, $this->validOptions)) {
             throw new Exception\OptionNotValidException('Option not valid ' . $key);

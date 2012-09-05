@@ -16,11 +16,6 @@ interface AdapterInterface
 {
 
     /**
-     * @param array $data
-     */
-    public function setData(array $data = array());
-
-    /**
      * @param string $key
      * @param string $value
      */
