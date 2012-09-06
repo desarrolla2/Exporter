@@ -58,10 +58,10 @@ class CSV implements AdapterInterface
             throw new Exception\FileOpenException();
         }
         if ($this->options['with-headers']) {
-            fwrite($this->fh, strtoupper(implode($this->options['separator'], array_keys($this->data[0]))));
+            fwrite($this->fh, strtoupper(implode($this->options['separator'], array_keys($this->data[0]))) . PHP_EOL);
         }
         foreach ($this->data as $item) {
-            fwrite($this->fh, implode($this->options['separator'], array_values($item)));
+            fwrite($this->fh, implode($this->options['separator'], array_values($item)) . PHP_EOL);
         }
         fclose($this->fh);
     }
