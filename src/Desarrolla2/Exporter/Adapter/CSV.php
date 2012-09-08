@@ -38,6 +38,7 @@ class CSV implements AdapterInterface
     public function __construct()
     {
         $this->options = array(
+            'data' => array(),
             'separator'    => ';',
             'with-headers' => true,
         );
@@ -51,15 +52,15 @@ class CSV implements AdapterInterface
         if (!count($this->data)) {
             throw new Exception\DataNotValidException();
         }
-        $this->fh = fopen($this->options['filename'], "w");        
+        $this->fh = fopen($this->options['filename'], "w");
         if (!$this->fh) {
             throw new Exception\FileOpenException();
         }
-        if ($this->options['with-headers']){
-            fwrite($this->fh, strtoupper( implode($this->options['separator'], array_keys($this->data[0]))));
+        if ($this->options['with-headers']) {
+            fwrite($this->fh, strtoupper(implode($this->options['separator'], array_keys($this->data[0]))) . PHP_EOL);
         }
         foreach ($this->data as $item) {
-            fwrite($this->fh, implode($this->options['separator'], array_values($item)));
+            fwrite($this->fh, implode($this->options['separator'], array_values($item)) . PHP_EOL);
         }
         fclose($this->fh);
     }
@@ -67,9 +68,9 @@ class CSV implements AdapterInterface
     /**
      * {@inheritdoc } 
      */
-    public function setData(array $data = array())
+    public function setData(array $array = array())
     {
-        $this->data = array();
+        $this->data = $array;
     }
 
     /**
@@ -77,7 +78,11 @@ class CSV implements AdapterInterface
      */
     public function setOption($key, $value)
     {
-        $this->options[$key] = $value;
+        if ($key == 'data') {
+            $this->data = $value;
+        } else {
+            $this->options[$key] = $value;
+        }
     }
 
 }
