@@ -17,7 +17,6 @@ use Desarrolla2\Exporter\Exception;
 
 class CSV implements AdapterInterface
 {
-
     /**
      * @var array
      */

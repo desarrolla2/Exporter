@@ -37,14 +37,15 @@ class Exporter implements ExporterInterface
      * @var array
      */
     protected $validOptions = array(
-        'with-headers', 'filename', 'separator'
+        'with-headers', 'data',
+        'filename', 'separator'
     );
 
     /**
      * @var array
      */
     protected $requiredOptions = array(
-        'filename',
+        'data', 'filename',
     );
 
     /**
@@ -96,7 +97,7 @@ class Exporter implements ExporterInterface
      */
     public function setData(array $array = array())
     {
-        $this->getAdapter()->setData($array);
+        $this->setOption('data', $array);
     }
 
     /**
