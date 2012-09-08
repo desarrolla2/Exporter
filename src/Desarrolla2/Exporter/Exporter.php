@@ -2,10 +2,10 @@
 
 /**
  * This file is part of the Exporter proyect.
- * 
+ *
  * Description of Exporter
  *
- * @author : Daniel González <daniel.gonzalez@freelancemadrid.es> 
+ * @author : Daniel González <daniel.gonzalez@freelancemadrid.es>
  * @file : Exporter.php , UTF-8
  * @date : Sep 6, 2012 , 12:28:03 AM
  */
@@ -49,7 +49,7 @@ class Exporter implements ExporterInterface
     );
 
     /**
-     * {@inheritdoc } 
+     * {@inheritdoc }
      */
     public function export()
     {
@@ -71,7 +71,7 @@ class Exporter implements ExporterInterface
 
     /**
      * Get the adapter
-     * 
+     *
      * @return type
      * @throws Exception\AdapterNotSetException
      */
@@ -85,7 +85,7 @@ class Exporter implements ExporterInterface
     }
 
     /**
-     * {@inheritdoc } 
+     * {@inheritdoc }
      */
     public function setAdapter(Adapter\AdapterInterface $adapter)
     {
@@ -93,7 +93,7 @@ class Exporter implements ExporterInterface
     }
 
     /**
-     * {@inheritdoc } 
+     * {@inheritdoc }
      */
     public function setData(array $array = array())
     {
@@ -101,7 +101,7 @@ class Exporter implements ExporterInterface
     }
 
     /**
-     * {@inheritdoc } 
+     * {@inheritdoc }
      */
     public function setFile($file)
     {
@@ -109,8 +109,8 @@ class Exporter implements ExporterInterface
     }
 
     /**
-     * 
-     * @param string $option
+     *
+     * @param  string $option
      * @return string
      */
     protected function sanitizeOption($option)
@@ -119,7 +119,7 @@ class Exporter implements ExporterInterface
     }
 
     /**
-     * {@inheritdoc } 
+     * {@inheritdoc }
      */
     public function setOption($key, $value)
     {
@@ -132,7 +132,7 @@ class Exporter implements ExporterInterface
     }
 
     /**
-     * {@inheritdoc } 
+     * {@inheritdoc }
      */
     public function setOptions(array $options = array())
     {

@@ -2,14 +2,13 @@
 
 /**
  * This file is part of the Exporter proyect.
- * 
+ *
  * Description of PHPArray
  *
- * @author : Daniel González <daniel.gonzalez@freelancemadrid.es> 
+ * @author : Daniel González <daniel.gonzalez@freelancemadrid.es>
  * @file : PHPArray.php , UTF-8
  * @date : Sep 8, 2012 , 4:03:54 PM
  */
-
 
 namespace Desarrolla2\Exporter\Adapter;
 
@@ -23,27 +22,25 @@ class PHPArray implements AdapterInterface
         throw new \Exception('Not Ready yet');
     }
     /**
-     * {@inheritdoc } 
+     * {@inheritdoc }
      */
     public function export()
     {
-        
+
     }
     /**
-     * {@inheritdoc } 
+     * {@inheritdoc }
      */
     public function setData(array $data = array())
     {
-        
+
     }
     /**
-     * {@inheritdoc } 
+     * {@inheritdoc }
      */
     public function setOption($key, $value)
     {
-        
+
     }
-    
-    
 
 }

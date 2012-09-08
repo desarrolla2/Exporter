@@ -2,10 +2,10 @@
 
 /**
  * This file is part of the Exporter proyect.
- * 
+ *
  * Description of PHPSerialize
  *
- * @author : Daniel González <daniel.gonzalez@freelancemadrid.es> 
+ * @author : Daniel González <daniel.gonzalez@freelancemadrid.es>
  * @file : PHPSerialize.php , UTF-8
  * @date : Sep 8, 2012 , 4:04:01 PM
  */
@@ -22,27 +22,25 @@ class PHPSerialize implements AdapterInterface
         throw new \Exception('Not Ready yet');
     }
     /**
-     * {@inheritdoc } 
+     * {@inheritdoc }
      */
     public function export()
     {
-        
+
     }
     /**
-     * {@inheritdoc } 
+     * {@inheritdoc }
      */
     public function setData(array $data = array())
     {
-        
+
     }
     /**
-     * {@inheritdoc } 
+     * {@inheritdoc }
      */
     public function setOption($key, $value)
     {
-        
+
     }
-    
-    
 
 }
