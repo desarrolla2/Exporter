@@ -1,1 +1,8 @@
-/nbproject/private/
+/composer.phar
+/vendor
+/nbproject
+*~
+*.swp
+*.local.php
+
+
