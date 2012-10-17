@@ -16,6 +16,12 @@ use Desarrolla2\Exporter\Adapter\AdapterInterface;
 
 interface ExporterInterface
 {
+    
+    /**
+     * 
+     * @param \Desarrolla2\Exporter\Adapter\AdapterInterface $adapter
+     */
+    public function __construct(Adapter\AdapterInterface $adapter);
 
     /**
      * Export data

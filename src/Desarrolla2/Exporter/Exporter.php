@@ -51,6 +51,14 @@ class Exporter implements ExporterInterface
     /**
      * {@inheritdoc }
      */
+    public function __construct(Adapter\AdapterInterface $adapter)
+    {
+        $this->setAdapter($adapter);
+    }
+
+    /**
+     * {@inheritdoc }
+     */
     public function export()
     {
         $this->checkOptions();
