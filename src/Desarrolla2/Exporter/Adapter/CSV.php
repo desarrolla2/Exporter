@@ -50,15 +50,15 @@ class CSV implements AdapterInterface
      */
     public function fetch()
     {
-        $data = array();
+        $data = '';
         if (!count($this->data)) {
             throw new Exception\DataNotValidException();
         }
         if ($this->options['with-headers']) {
-            $data = strtoupper(implode($this->options['separator'], array_keys($this->data[0]))) . PHP_EOL;
+            $data .= strtoupper(implode($this->options['separator'], array_keys($this->data[0]))) . PHP_EOL;
         }
         foreach ($this->data as $item) {
-            $data = implode($this->options['separator'], array_values($item)) . PHP_EOL;
+            $data .= implode($this->options['separator'], array_values($item)) . PHP_EOL;
         }
         return $data;
     }
