@@ -61,20 +61,7 @@ class Exporter implements ExporterInterface
      */
     public function fetch()
     {
-        $this->checkOptions();
         return $this->getAdapter()->fetc();
-    }
-
-    /**
-     * check if all options was set
-     */
-    protected function checkOptions()
-    {
-        foreach ($this->requiredOptions as $required) {
-            if (!array_key_exists($required, $this->options)) {
-                throw new Exception\OptionsNotValidException('Required option [' . $required . '] to works ');
-            }
-        }
     }
 
     /**
@@ -154,7 +141,6 @@ class Exporter implements ExporterInterface
      */
     public function write()
     {
-        $this->checkOptions();
         return $this->getAdapter()->write();
     }
 
