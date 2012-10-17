@@ -26,7 +26,7 @@ interface ExporterInterface
     /**
      * Export data
      */
-    public function export();
+    public function fetch();
 
     /**
      * Set adapter
@@ -55,4 +55,9 @@ interface ExporterInterface
      * @param array $options
      */
     public function setOptions(array $options = array());
+    
+        /**
+     * Export data to a file
+     */
+    public function write();
 }

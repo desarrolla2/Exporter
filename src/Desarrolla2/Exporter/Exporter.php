@@ -59,10 +59,10 @@ class Exporter implements ExporterInterface
     /**
      * {@inheritdoc }
      */
-    public function export()
+    public function fetch()
     {
         $this->checkOptions();
-        return $this->getAdapter()->export();
+        return $this->getAdapter()->fetc();
     }
 
     /**
@@ -147,6 +147,15 @@ class Exporter implements ExporterInterface
         foreach ($options as $key => $value) {
             $this->setOption($key, $value);
         }
+    }
+    
+     /**
+     * {@inheritdoc }
+     */
+    public function write()
+    {
+        $this->checkOptions();
+        return $this->getAdapter()->write();
     }
 
 }
