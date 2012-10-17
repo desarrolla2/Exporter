@@ -24,5 +24,10 @@ interface AdapterInterface
     /**
      * Export data
      */
-    public function export();
+    public function fetch();
+
+    /**
+     * Export data to a file
+     */
+    public function write();
 }

@@ -17,6 +17,7 @@ use Desarrolla2\Exporter\Exception;
 
 class CSV implements AdapterInterface
 {
+
     /**
      * @var array
      */
@@ -39,7 +40,7 @@ class CSV implements AdapterInterface
     {
         $this->options = array(
             'data' => array(),
-            'separator'    => ';',
+            'separator' => ';',
             'with-headers' => true,
         );
     }
@@ -47,22 +48,19 @@ class CSV implements AdapterInterface
     /**
      * {@inheritdoc }
      */
-    public function export()
+    public function fetch()
     {
+        $data = array();
         if (!count($this->data)) {
             throw new Exception\DataNotValidException();
         }
-        $this->fh = fopen($this->options['filename'], "w");
-        if (!$this->fh) {
-            throw new Exception\FileOpenException();
-        }
         if ($this->options['with-headers']) {
-            fwrite($this->fh, strtoupper(implode($this->options['separator'], array_keys($this->data[0]))) . PHP_EOL);
+            $data = strtoupper(implode($this->options['separator'], array_keys($this->data[0]))) . PHP_EOL;
         }
         foreach ($this->data as $item) {
-            fwrite($this->fh, implode($this->options['separator'], array_values($item)) . PHP_EOL);
+            $data = implode($this->options['separator'], array_values($item)) . PHP_EOL;
         }
-        fclose($this->fh);
+        return $data;
     }
 
     /**
@@ -83,6 +81,19 @@ class CSV implements AdapterInterface
         } else {
             $this->options[$key] = $value;
         }
+    }
+
+    /**
+     * {@inheritdoc }
+     */
+    public function write()
+    {
+        $this->fh = fopen($this->options['filename'], "w");
+        if (!$this->fh) {
+            throw new Exception\FileOpenException();
+        }
+        fwrite($this->fh, $this->get());
+        fclose($this->fh);
     }
 
 }

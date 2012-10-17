@@ -62,7 +62,7 @@ class Exporter implements ExporterInterface
     public function export()
     {
         $this->checkOptions();
-        $this->getAdapter()->export();
+        return $this->getAdapter()->export();
     }
 
     /**
