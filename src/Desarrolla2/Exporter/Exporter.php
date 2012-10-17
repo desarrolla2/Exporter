@@ -61,7 +61,7 @@ class Exporter implements ExporterInterface
      */
     public function fetch()
     {
-        return $this->getAdapter()->fetc();
+        return $this->getAdapter()->fetch();
     }
 
     /**
