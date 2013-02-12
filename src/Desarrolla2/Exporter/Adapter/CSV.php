@@ -15,8 +15,7 @@ namespace Desarrolla2\Exporter\Adapter;
 use Desarrolla2\Exporter\Adapter\AdapterInterface;
 use Desarrolla2\Exporter\Exception;
 
-class CSV implements AdapterInterface
-{
+class CSV implements AdapterInterface {
 
     /**
      * @var array
@@ -36,8 +35,7 @@ class CSV implements AdapterInterface
     /**
      * Constructor
      */
-    public function __construct()
-    {
+    public function __construct() {
         $this->options = array(
             'data' => array(),
             'separator' => ';',
@@ -48,14 +46,13 @@ class CSV implements AdapterInterface
     /**
      * {@inheritdoc }
      */
-    public function fetch()
-    {
+    public function fetch() {
         $data = '';
         if (!count($this->data)) {
             throw new Exception\DataNotValidException();
         }
         if ($this->options['with-headers']) {
-            $data .= strtoupper(implode($this->options['separator'], array_keys($this->data[0]))) . PHP_EOL;
+            $data .= implode($this->options['separator'], array_keys($this->data[0])) . PHP_EOL;
         }
         foreach ($this->data as $item) {
             $data .= implode($this->options['separator'], array_values($item)) . PHP_EOL;
@@ -66,16 +63,14 @@ class CSV implements AdapterInterface
     /**
      * {@inheritdoc }
      */
-    public function setData(array $array = array())
-    {
+    public function setData(array $array = array()) {
         $this->data = $array;
     }
 
     /**
      * {@inheritdoc }
      */
-    public function setOption($key, $value)
-    {
+    public function setOption($key, $value) {
         if ($key == 'data') {
             $this->data = $value;
         } else {
@@ -86,8 +81,7 @@ class CSV implements AdapterInterface
     /**
      * {@inheritdoc }
      */
-    public function write()
-    {
+    public function write() {
         $this->fh = fopen($this->options['filename'], "w");
         if (!$this->fh) {
             throw new Exception\FileOpenException();
