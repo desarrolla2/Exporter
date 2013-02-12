@@ -92,7 +92,7 @@ class CSV implements AdapterInterface
         if (!$this->fh) {
             throw new Exception\FileOpenException();
         }
-        fwrite($this->fh, $this->get());
+        fwrite($this->fh, $this->fetch());
         fclose($this->fh);
     }
 
